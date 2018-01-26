@@ -1,0 +1,27 @@
+Circuit: * C:\Users\john\Downloads\Bill(Gates)\CMOS\Test_NAND.asc
+
+WARNING: Less than two connections to node C.  This node is used by VC.
+WARNING: Less than two connections to node D.  This node is used by VD.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Direct Newton iteration for .op point succeeded.
+
+Date: Thu Jan 25 10:23:44 2018
+Total elapsed time: 0.139 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 7159
+traniter = 7145
+tranpoints = 3297
+accept = 2859
+rejected = 438
+matrix size = 12
+fillins = 0
+solver = Normal
+Matrix Compiler1: 356 bytes object code size  0.1/0.1/[0.0]
+Matrix Compiler2: off  [0.0]/0.1/0.1
+

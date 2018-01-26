@@ -1,0 +1,31 @@
+* C:\Users\john\Downloads\Bill(Gates)\CMOS\Test_XOR.asc
+XX2 A B Out VDD xor_gate
+
+* block symbol definitions
+.subckt xor_gate A B Out VDD
+M1 Out A N003 N003 RIT4007N7
+M2 Out N002 P001 P001 RIT4007P7
+M3 Out N001 P002 P002 RIT4007P7
+M4 N003 N001 0 0 RIT4007N7
+M5 N003 B 0 0 RIT4007N7
+M6 Out N002 N003 N003 RIT4007N7
+XX2 A VDD N001 not_gate
+M7 P002 B VDD VDD RIT4007P7
+M8 P001 A VDD VDD RIT4007P7
+XX3 B VDD N002 not_gate
+.inc CD4007.mod
+.ends xor_gate
+
+.subckt not_gate A VDD !A
+M1 !A A 0 0 RIT4007N7
+M2 !A A VDD VDD RIT4007P7
+.inc CD4007.mod
+.ends not_gate
+
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\john\Documents\LTspiceXVII\lib\cmp\standard.mos
+.tran 15m
+.inc Test_inputA-D.txt
+.backanno
+.end

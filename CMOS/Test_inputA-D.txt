@@ -1,0 +1,6 @@
+VDD VDD 0 5
+
+VA A 0 PULSE(0 5 0 2n 1n 1m 2m)
+VB B 0 PULSE(0 5 0 2n 1n 2m 4m)
+VC C 0 PULSE(0 5 0 2n 1n 4m 8m)
+VD D 0 PULSE(0 5 0 2n 1n 8m 16m)
