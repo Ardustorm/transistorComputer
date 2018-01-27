@@ -1,0 +1,11 @@
+VDD VDD 0 5
+
+VA0 A[0] 0 PULSE(0 5 0 2n 1n 1m 2m)
+VA1 A[1] 0 PULSE(0 5 0 2n 1n 1m 2m)
+VA2 A[2] 0 PULSE(0 5 0 2n 1n 1m 2m)
+VA3 A[3] 0 PULSE(0 5 0 2n 1n 1m 2m)
+
+VB0 B[0] 0 PULSE(0 5 0 2n 1n 1m 2m)
+VB1 B[1] 0 PULSE(0 5 0 2n 1n 1m 2m)
+VB2 B[2] 0 PULSE(0 5 0 2n 1n 1m 2m)
+VB3 B[3] 0 PULSE(0 5 0 2n 1n 1m 2m)
