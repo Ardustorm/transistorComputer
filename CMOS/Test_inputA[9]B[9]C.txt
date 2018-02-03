@@ -1,4 +1,5 @@
 VDD VDD 0 5
+VC C 0 0
 
 VA[0] A[0] 0 PULSE(0 5 1m 2n 1n 1m 2m)
 VA[1] A[1] 0 PULSE(0 5 2m 2n 1n 2m 4m)

@@ -1,21 +1,10 @@
 Circuit: * D:\transistorComputer\CMOS\Test_ALU_ADD_MUL.asc
 
-WARNING: Node C is floating.
 WARNING: Node X1:SUM[6] is floating.
 WARNING: Node X1:SUM[7] is floating.
 WARNING: Node X1:SUM[5:8] is floating.
 WARNING: Node X1:SUM[8] is floating.
 
-WARNING: Less than two connections to node A[4].  This node is used by VA[4].
-WARNING: Less than two connections to node A[5].  This node is used by VA[5].
-WARNING: Less than two connections to node A[6].  This node is used by VA[6].
-WARNING: Less than two connections to node A[7].  This node is used by VA[7].
-WARNING: Less than two connections to node A[8].  This node is used by VA[8].
-WARNING: Less than two connections to node B[4].  This node is used by VB[4].
-WARNING: Less than two connections to node B[5].  This node is used by VB[5].
-WARNING: Less than two connections to node B[6].  This node is used by VB[6].
-WARNING: Less than two connections to node B[7].  This node is used by VB[7].
-WARNING: Less than two connections to node B[8].  This node is used by VB[8].
 Warning: Pd = 0 is less than W.
 Warning: Ps = 0 is less than W.
 Warning: Pd = 0 is less than W.
@@ -1324,7 +1313,7 @@ Warning: Pd = 0 is less than W.
 Warning: Ps = 0 is less than W.
 Warning: Pd = 0 is less than W.
 Warning: Ps = 0 is less than W.
-Singular matrix:  Check node x1:sum[7]
+Singular matrix:  Check node x1:sum[8]
    Iteration No. 1
 Direct Newton iteration failed to find .op point.  (Use ".option noopiter" to skip.)
 Starting Gmin stepping
@@ -1343,41 +1332,40 @@ Gmin = 2.18725e-010
 Gmin = 2.34854e-011
 Gmin = 2.52173e-012
 Gmin = 2.70769e-013
-Singular matrix:  Check node x1:sum[7]
+Singular matrix:  Check node x1:sum[5:8]
    Iteration No. 2
 Gmin = 0
-Singular matrix:  Check node x1:sum[7]
+Singular matrix:  Check node x1:sum[5:8]
    Iteration No. 1
 Gmin stepping failed
 
 Starting source stepping with srcstepmethod=0
-Singular matrix:  Check node x1:sum[7]
-   Iteration No. 1
 Singular matrix:  Check node x1:sum[5:8]
+   Iteration No. 1
+Singular matrix:  Check node x1:sum[8]
    Iteration No. 2
 Could not converge to DC with sources off!
 Starting source stepping with srcstepmethod=1
-Singular matrix:  Check node x1:sum[5:8]
+Singular matrix:  Check node x1:sum[8]
    Iteration No. 1
 Could not converge to DC with sources off!
 Pseudo Transient succeeded in finding the operating point at 655.365 ms.
-Ignoring empty pin current: Ix(x1:a[4])
-Ignoring empty pin current: Ix(x1:a[5])
-Ignoring empty pin current: Ix(x1:a[6])
-Ignoring empty pin current: Ix(x1:a[7])
-Ignoring empty pin current: Ix(x1:a[8])
-Ignoring empty pin current: Ix(x1:b[4])
-Ignoring empty pin current: Ix(x1:b[5])
-Ignoring empty pin current: Ix(x1:b[6])
-Ignoring empty pin current: Ix(x1:b[7])
-Ignoring empty pin current: Ix(x1:b[8])
-Ignoring empty pin current: Ix(x1:a[4])
-Ignoring empty pin current: Ix(x1:a[5])
-Ignoring empty pin current: Ix(x1:a[6])
-Ignoring empty pin current: Ix(x1:a[7])
-Ignoring empty pin current: Ix(x1:a[8])
-Ignoring empty pin current: Ix(x1:b[4])
-Ignoring empty pin current: Ix(x1:b[5])
-Ignoring empty pin current: Ix(x1:b[6])
-Ignoring empty pin current: Ix(x1:b[7])
-Ignoring empty pin current: Ix(x1:b[8])
+
+Date: Sat Feb 03 14:24:31 2018
+Total elapsed time: 9.369 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 9436
+traniter = 7087
+tranpoints = 2770
+accept = 2350
+rejected = 434
+matrix size = 536
+fillins = 1306
+solver = Normal
+Thread vector: 1285.2/866.0[8] 233.0/153.6[8] 53.6/39.3[4] 5.9/3.7[7]  2592/500
+Matrix Compiler1: 183.02 KB object code size  60.6/31.0/[20.7]
+Matrix Compiler2: 91.79 KB object code size  22.2/16.4/[10.4]
+
