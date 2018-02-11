@@ -1,0 +1,4 @@
+VDD VDD 0 5
+
+VA CTRL 0 PULSE(0 5 0 2n 1n 1m 2m)
+
