@@ -1,0 +1,92 @@
+* D:\transistorComputer\CMOS\Ring_Occ[71].asc
+XX1 out VDD N051 CTRL gate_starved_inverter
+XX2 N051 VDD N052 CTRL gate_starved_inverter
+XX3 N052 VDD N053 CTRL gate_starved_inverter
+XX4 N053 VDD N054 CTRL gate_starved_inverter
+XX5 N054 VDD N055 CTRL gate_starved_inverter
+XX6 N055 VDD N056 CTRL gate_starved_inverter
+XX7 N056 VDD N057 CTRL gate_starved_inverter
+XX8 N057 VDD N058 CTRL gate_starved_inverter
+XX9 N058 VDD N059 CTRL gate_starved_inverter
+XX10 N059 VDD N060 CTRL gate_starved_inverter
+XX11 N060 VDD N061 CTRL gate_starved_inverter
+XX12 N061 VDD N062 CTRL gate_starved_inverter
+XX13 N062 VDD N063 CTRL gate_starved_inverter
+XX14 N063 VDD N064 CTRL gate_starved_inverter
+XX15 N064 VDD N065 CTRL gate_starved_inverter
+XX16 N065 VDD N066 CTRL gate_starved_inverter
+XX17 N066 VDD N067 CTRL gate_starved_inverter
+XX18 N067 VDD P001 CTRL gate_starved_inverter
+XX37 P002 VDD N017 CTRL gate_starved_inverter
+XX38 N017 VDD N016 CTRL gate_starved_inverter
+XX39 N016 VDD N015 CTRL gate_starved_inverter
+XX40 N015 VDD N014 CTRL gate_starved_inverter
+XX41 N014 VDD N013 CTRL gate_starved_inverter
+XX42 N013 VDD N012 CTRL gate_starved_inverter
+XX43 N012 VDD N011 CTRL gate_starved_inverter
+XX44 N011 VDD N010 CTRL gate_starved_inverter
+XX45 N010 VDD N009 CTRL gate_starved_inverter
+XX46 N009 VDD N008 CTRL gate_starved_inverter
+XX47 N008 VDD N007 CTRL gate_starved_inverter
+XX48 N007 VDD N006 CTRL gate_starved_inverter
+XX49 N006 VDD N005 CTRL gate_starved_inverter
+XX50 N005 VDD N004 CTRL gate_starved_inverter
+XX51 N004 VDD N003 CTRL gate_starved_inverter
+XX52 N003 VDD N002 CTRL gate_starved_inverter
+XX53 N002 VDD N001 CTRL gate_starved_inverter
+XX54 N001 VDD P003 CTRL gate_starved_inverter
+XX19 P001 VDD N050 CTRL gate_starved_inverter
+XX20 N050 VDD N049 CTRL gate_starved_inverter
+XX21 N049 VDD N047 CTRL gate_starved_inverter
+XX22 N047 VDD N045 CTRL gate_starved_inverter
+XX23 N045 VDD N043 CTRL gate_starved_inverter
+XX24 N043 VDD N041 CTRL gate_starved_inverter
+XX25 N041 VDD N039 CTRL gate_starved_inverter
+XX26 N039 VDD N037 CTRL gate_starved_inverter
+XX27 N037 VDD N035 CTRL gate_starved_inverter
+XX28 N035 VDD N033 CTRL gate_starved_inverter
+XX29 N033 VDD N031 CTRL gate_starved_inverter
+XX30 N031 VDD N029 CTRL gate_starved_inverter
+XX31 N029 VDD N027 CTRL gate_starved_inverter
+XX32 N027 VDD N025 CTRL gate_starved_inverter
+XX33 N025 VDD N023 CTRL gate_starved_inverter
+XX34 N023 VDD N021 CTRL gate_starved_inverter
+XX35 N021 VDD N019 CTRL gate_starved_inverter
+XX36 N019 VDD P002 CTRL gate_starved_inverter
+XX55 P003 VDD N018 CTRL gate_starved_inverter
+XX56 N018 VDD N020 CTRL gate_starved_inverter
+XX57 N020 VDD N022 CTRL gate_starved_inverter
+XX58 N022 VDD N024 CTRL gate_starved_inverter
+XX59 N024 VDD N026 CTRL gate_starved_inverter
+XX60 N026 VDD N028 CTRL gate_starved_inverter
+XX61 N028 VDD N030 CTRL gate_starved_inverter
+XX62 N030 VDD N032 CTRL gate_starved_inverter
+XX63 N032 VDD N034 CTRL gate_starved_inverter
+XX64 N034 VDD N036 CTRL gate_starved_inverter
+XX65 N036 VDD N038 CTRL gate_starved_inverter
+XX66 N038 VDD N040 CTRL gate_starved_inverter
+XX67 N040 VDD N042 CTRL gate_starved_inverter
+XX68 N042 VDD N044 CTRL gate_starved_inverter
+XX69 N044 VDD N046 CTRL gate_starved_inverter
+XX70 N046 VDD N048 CTRL gate_starved_inverter
+XX71 N048 VDD out CTRL gate_starved_inverter
+V1 CTRL 0 5
+V2 VDD 0 5
+
+* block symbol definitions
+.subckt gate_starved_inverter A VDD !A CTRL
+M1 !A A P001 P001 myNMOS w=.3u L=100u
+M2 !A A VDD VDD myPMOS W=2u L=100u
+M3 P001 CTRL 0 0 myNMOS W=10u L=1u
+.model myNMOS NMOS
+.model myPMOS PMOS
+.inc Mod_W2017N.mod
+.ends gate_starved_inverter
+
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\john\Documents\LTspiceXVII\lib\cmp\standard.mos
+.tran 2m
+.ic V(out)=0
+.backanno
+.end
