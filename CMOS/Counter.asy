@@ -1,0 +1,14 @@
+Version 4
+SymbolType BLOCK
+RECTANGLE Normal 96 49 -95 -49
+TEXT 0 0 Center 2 Counter
+WINDOW 0 -92 61 Left 2
+PIN 96 32 RIGHT 8
+PINATTR PinName VDD
+PINATTR SpiceOrder 1
+PIN 96 -32 RIGHT 8
+PINATTR PinName CNT[0:2]
+PINATTR SpiceOrder 2
+PIN -96 32 LEFT 8
+PINATTR PinName CLK
+PINATTR SpiceOrder 3
