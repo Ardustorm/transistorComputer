@@ -1,0 +1,48 @@
+Circuit: * D:\transistorComputer\CMOS\Test_DFF.asc
+
+Warning: Multiple definitions of model "x1:x2:mypmos" Type: BSIM3
+Warning: Multiple definitions of model "x1:x2:mynmos" Type: BSIM3
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Direct Newton iteration for .op point succeeded.
+
+Date: Sat Feb 17 10:47:25 2018
+Total elapsed time: 0.317 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 15057
+traniter = 15023
+tranpoints = 5892
+accept = 4803
+rejected = 1089
+matrix size = 19
+fillins = 16
+solver = Normal
+Thread vector: 15.0/12.8[2] 2.4/2.0[2] 0.8/0.7[1] 0.1/0.7[1]  2592/500
+Matrix Compiler1: 2.46 KB object code size  0.5/0.2/[0.1]
+Matrix Compiler2: off  [0.2]/0.3/1.0
+
