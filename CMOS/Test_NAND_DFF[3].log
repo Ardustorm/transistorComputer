@@ -1,0 +1,29 @@
+Circuit: * D:\transistorComputer\CMOS\Test_NAND_DFF[3].asc
+
+WARNING: Node NC_01 is floating.
+
+WARNING: Less than two connections to node NC_01.  This node is used by C1.
+WARNING: Less than two connections to node D.  This node is used by VD.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Direct Newton iteration for .op point succeeded.
+
+Date: Sat Feb 17 11:05:19 2018
+Total elapsed time: 0.165 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 9793
+traniter = 9783
+tranpoints = 4067
+accept = 3451
+rejected = 616
+matrix size = 14
+fillins = 0
+solver = Normal
+Matrix Compiler1: 510 bytes object code size  0.1/0.1/[0.1]
+Matrix Compiler2: 1.03 KB object code size  0.1/0.1/[0.1]
+
