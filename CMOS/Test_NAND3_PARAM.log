@@ -1,0 +1,26 @@
+Circuit: * D:\transistorComputer\CMOS\Test_NAND3_PARAM.asc
+
+WARNING: Less than two connections to node D.  This node is used by VD.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Direct Newton iteration for .op point succeeded.
+
+Date: Sat Feb 17 13:45:51 2018
+Total elapsed time: 0.164 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 9848
+traniter = 9842
+tranpoints = 3809
+accept = 3232
+rejected = 577
+matrix size = 13
+fillins = 0
+solver = Normal
+Matrix Compiler1: 496 bytes object code size  0.1/0.0/[0.0]
+Matrix Compiler2: off  [0.1]/0.1/0.1
+

@@ -1,7 +1,7 @@
 Version 4
 SymbolType BLOCK
 RECTANGLE Normal 48 27 -47 -43
-TEXT 1 -8 Center 2 NOT-DFF
+TEXT 1 -8 Center 2 NOT-P
 WINDOW 0 -45 37 Left 2
 PIN -48 -32 LEFT 8
 PINATTR PinName A
