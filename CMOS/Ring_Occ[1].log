@@ -1,27 +1,28 @@
-Circuit: * D:\transistorComputer\CMOS\Ring_Occ[1].asc
+Circuit: * Z:\home\luke\Backup\info\projects\transistorComputer\CMOS\Ring_Occ[1].asc
 
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
 Warning: Pd = 0 is less than W.
 Warning: Ps = 0 is less than W.
 Warning: Pd = 0 is less than W.
 Warning: Ps = 0 is less than W.
 Direct Newton iteration for .op point succeeded.
-Changing Tseed to 6.25e-009
-Changing Tseed to 6.25e-011
 
-Date: Sat Feb 10 18:54:11 2018
-Total elapsed time: 0.087 seconds.
+Date: Thu Feb 15 09:46:38 2018
+Total elapsed time: 0.071 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 2220
-traniter = 2212
-tranpoints = 1082
-accept = 1079
-rejected = 1
-matrix size = 5
+totiter = 2142
+traniter = 2135
+tranpoints = 1065
+accept = 1059
+rejected = 6
+matrix size = 6
 fillins = 0
 solver = Normal
-Matrix Compiler1:       9 opcodes  0.5/[0.0]/0.0
-Matrix Compiler2:      27 opcodes  0.1/[0.1]/0.1
+Matrix Compiler1: 164 bytes object code size  0.6/0.6/[0.6]
+Matrix Compiler2: 374 bytes object code size  0.6/0.6/[0.6]
+
 
