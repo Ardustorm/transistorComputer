@@ -1,0 +1,33 @@
+Circuit: * D:\transistorComputer\CMOS\Lab_6_DFF.asc
+
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Direct Newton iteration for .op point succeeded.
+
+Date: Thu Feb 22 15:39:33 2018
+Total elapsed time: 0.370 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 16906
+traniter = 16874
+tranpoints = 6037
+accept = 4637
+rejected = 1400
+matrix size = 12
+fillins = 0
+solver = Normal
+Matrix Compiler1: 536 bytes object code size  0.2/0.1/[0.0]
+Matrix Compiler2: off  [0.1]/0.1/0.1
+

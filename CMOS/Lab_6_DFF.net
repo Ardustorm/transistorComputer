@@ -1,0 +1,33 @@
+* D:\transistorComputer\CMOS\Lab_6_DFF.asc
+XX1 N002 VDD N001 gate_not_param
+XX2 N003 VDD out gate_not_param
+M1 N002 CLK A A myNMOS W=myNW L=myNL
+M2 N002 !CLK A A myPMOS W=myPW L=myPL
+M3 N003 !CLK N001 N001 myNMOS W=myNW L=myNL
+M4 N003 CLK N001 N001 myPMOS W=myPW L=myPL
+
+* block symbol definitions
+.subckt gate_not_param A VDD !A
+M1 !A A 0 0 myNMOS W=myNW L=myNL
+M2 !A A VDD VDD myPMOS W=myPW L=myPL
+.inc Mod_W2017N.mod
+.param myPW=2u*sqrt(Speed)
+.param myPL=100u/sqrt(Speed)
+.param myNW=.6u*sqrt(Speed)
+.param myNL=100u/sqrt(Speed)
+.param Speed=1
+.ends gate_not_param
+
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\john\Documents\LTspiceXVII\lib\cmp\standard.mos
+.inc Test_inputLab6.txt
+.tran 0 30u 0
+.inc Mod_W2017N.mod
+.param myPW=2u*sqrt(Speed)
+.param myPL=100u/sqrt(Speed)
+.param myNW=.6u*sqrt(Speed)
+.param myNL=100u/sqrt(Speed)
+.param Speed=1
+.backanno
+.end
