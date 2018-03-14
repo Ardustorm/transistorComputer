@@ -1,5 +1,5 @@
 VDD VDD 0 5
-VCLK CLK 0 PULSE(0 5 1m 2n 1n 1m 2m)
+VCLK CLK 0 PULSE(0 5 .5m 2n 1n .5m 1m)
 
 
 VA0 A[0] 0 PULSE(0 5 1m 2n 1n 1m 2m)
