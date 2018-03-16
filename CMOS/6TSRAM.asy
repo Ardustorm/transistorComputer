@@ -17,4 +17,4 @@ PINATTR PinName WA
 PINATTR SpiceOrder 5
 PIN -48 0 LEFT 8
 PINATTR PinName RA
-PINATTR SpiceOrder 6
+PINATTR SpiceOrder 4
