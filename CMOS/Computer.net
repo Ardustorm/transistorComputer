@@ -1,0 +1,352 @@
+* D:\transistorComputer\CMOS\Computer.asc
+XX2 VDD PC[0] PC[1] PC[2] CLK counter
+XX3 REGIN[0] REGIN[1] REGIN[2] REGIN[3] REGIN[4] REGIN[5] REGIN[6] REGIN[7] REGIN[8] VDD CLK ADDR0[0] ADDR0[1] ADDR1[0] ADDR1[1] ADDR2[0] ADDR2[1] REGOUT[0] REGOUT[1] REGOUT[2] REGOUT[3] REGOUT[4] REGOUT[5] REGOUT[6] REGOUT[7] REGOUT[8] null[0] null[1] null[2] null[3] null[4] null[5] null[6] null[7] null[8] N002 N002 N002 N002 N002 N002 N002 N002 N002 null[9] null[10] null[11] null[12] null[13] null[14] null[15] NC_01 NC_02 reg_file[4]
+V1 VDD 0 5
+XX4 REGOUT[0] REGOUT[1] REGOUT[2] REGOUT[3] N002 N002 N002 N002 ALU VDD ALUOUT[0] ALUOUT[1] ALUOUT[2] ALUOUT[3] ALUOUT[4] ALUOUT[5] ALUOUT[6] ALUOUT[7] ALUOUT[8] alu_add_mul
+V2 CLK 0 PULSE(0 5 10u 1n 1n 10u 20u)
+XX1 0 WL[7] Write ALU DataSelect ADDR1[1] ADDR1[0] ADDR2[1] ADDR2[0] ADDR0[1] ADDR0[0] VDD WL[0] WL[6] WL[5] WL[4] WL[3] WL[2] WL[1] instructionmemorysimple
+XX5 CLK VDD WL[0] WL[1] WL[2] WL[3] PC[0] PC[1] decoder
+XX6 CLK VDD WL[4] WL[5] WL[6] WL[7] PC[2] PC[3] decoder
+R1 PC[3] 0 1
+XX7 REGOUT[0] REGOUT[1] REGOUT[2] REGOUT[3] REGOUT[4] REGOUT[5] REGOUT[6] REGOUT[7] REGOUT[8] VDD N001 N001 N001 N001 N001 N001 N001 N001 N001 Write ALU sram
+XX8 N001 N001 N001 N001 N001 N001 N001 N001 N001 ALUOUT[0] ALUOUT[1] ALUOUT[2] ALUOUT[3] ALUOUT[4] ALUOUT[5] ALUOUT[6] ALUOUT[7] ALUOUT[8] DataSelect VDD REGIN[0] REGIN[1] REGIN[2] REGIN[3] REGIN[4] REGIN[5] REGIN[6] REGIN[7] REGIN[8] mux[9]
+
+* block symbol definitions
+.subckt counter VDD CNT[0] CNT[1] CNT[2] CLK
+XX1 NS[0] NS[1] NS[2] VDD CNT[0] CNT[1] CNT[2] CLK !Q[0] !Q[1] !Q[2] reg[3]
+XX2 CNT[0] CNT[1] CNT[2] VDD NS[0] NS[1] NS[2] counter_ns
+.ends counter
+
+.subckt reg_file[4] D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD CLK ADDR0[0] ADDR0[1] ADDR1[0] ADDR1[1] ADDR2[0] ADDR2[1] Q1[0] Q1[1] Q1[2] Q1[3] Q1[4] Q1[5] Q1[6] Q1[7] Q1[8] !Q1[0] !Q1[1] !Q1[2] !Q1[3] !Q1[4] !Q1[5] !Q1[6] !Q1[7] !Q1[8] Q2[0] Q2[1] Q2[2] Q2[3] Q2[4] Q2[5] Q2[6] Q2[7] Q2[8] !Q2[0] !Q2[1] !Q2[2] !Q2[3] !Q2[4] !Q2[5] !Q2[6] !Q2[7] !Q2[8]
+XX1 D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD N001 N001 N001 N001 N001 N001 N001 N001 N001 SEL[0] N003 N003 N003 N003 N003 N003 N003 N003 N003 reg[9]
+XX2 D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD N004 N004 N004 N004 N004 N004 N004 N004 N004 SEL[1] N007 N007 N007 N007 N007 N007 N007 N007 N007 reg[9]
+XX3 D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD N006 N006 N006 N006 N006 N006 N006 N006 N006 SEL[2] N009 N009 N009 N009 N009 N009 N009 N009 N009 reg[9]
+XX4 D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD N008 N008 N008 N008 N008 N008 N008 N008 N008 SEL[3] N012 N012 N012 N012 N012 N012 N012 N012 N012 reg[9]
+XX5 N001 N001 N001 N001 N001 N001 N001 N001 N001 N004 N004 N004 N004 N004 N004 N004 N004 N004 ADDR1[0] VDD N002 N002 N002 N002 N002 N002 N002 N002 N002 mux[9]
+XX6 N006 N006 N006 N006 N006 N006 N006 N006 N006 N008 N008 N008 N008 N008 N008 N008 N008 N008 ADDR1[0] VDD N005 N005 N005 N005 N005 N005 N005 N005 N005 mux[9]
+XX7 N002 N002 N002 N002 N002 N002 N002 N002 N002 N005 N005 N005 N005 N005 N005 N005 N005 N005 ADDR1[1] VDD Q[0] Q[1] Q[2] Q[3] Q[4] Q[5] Q[6] Q[7] Q[8] mux[9]
+XX8 N003 N003 N003 N003 N003 N003 N003 N003 N003 N007 N007 N007 N007 N007 N007 N007 N007 N007 ADDR1[0] VDD N010 N010 N010 N010 N010 N010 N010 N010 N010 mux[9]
+XX9 N009 N009 N009 N009 N009 N009 N009 N009 N009 N012 N012 N012 N012 N012 N012 N012 N012 N012 ADDR1[0] VDD N011 N011 N011 N011 N011 N011 N011 N011 N011 mux[9]
+XX10 N010 N010 N010 N010 N010 N010 N010 N010 N010 N011 N011 N011 N011 N011 N011 N011 N011 N011 ADDR1[1] VDD !Q[0] !Q[1] !Q[2] !Q[3] !Q[4] !Q[5] !Q[6] !Q[7] !Q[8] mux[9]
+XX13 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 ADDR2[0] VDD N013 N013 N013 N013 N013 N013 N013 N013 N013 mux[9]
+XX14 N009 N009 N009 N009 N009 N009 N009 N009 N009 N012 N012 N012 N012 N012 N012 N012 N012 N012 ADDR2[0] VDD N014 N014 N014 N014 N014 N014 N014 N014 N014 mux[9]
+XX19 N013 N013 N013 N013 N013 N013 N013 N013 N013 N014 N014 N014 N014 N014 N014 N014 N014 N014 ADDR2[1] VDD Q[0] Q[1] Q[2] Q[3] Q[4] Q[5] Q[6] Q[7] Q[8] mux[9]
+XX24 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 N007 ADDR2[0] VDD N015 N015 N015 N015 N015 N015 N015 N015 N015 mux[9]
+XX25 N009 N009 N009 N009 N009 N009 N009 N009 N009 N012 N012 N012 N012 N012 N012 N012 N012 N012 ADDR2[0] VDD N016 N016 N016 N016 N016 N016 N016 N016 N016 mux[9]
+XX26 N015 N015 N015 N015 N015 N015 N015 N015 N015 N016 N016 N016 N016 N016 N016 N016 N016 N016 ADDR2[1] VDD !Q[0] !Q[1] !Q[2] !Q[3] !Q[4] !Q[5] !Q[6] !Q[7] !Q[8] mux[9]
+XX11 CLK VDD SEL[0] SEL[1] SEL[2] SEL[3] ADDR0[0] ADDR0[1] decoder
+.ends reg_file[4]
+
+.subckt alu_add_mul A[0] A[1] A[2] A[3] B[0] B[1] B[2] B[3] C VDD Out[0] Out[1] Out[2] Out[3] Out[4] Out[5] Out[6] Out[7] Out[8]
+XX1 A[0] A[1] A[2] A[3] VDD SUM[0] SUM[1] SUM[2] SUM[3] B[0] B[1] B[2] B[3] SUM[4] rca[4]
+XX2 A[0] A[1] A[2] A[3] VDD Prod[0] Prod[1] Prod[2] Prod[3] Prod[4] Prod[5] Prod[6] Prod[7] B[0] B[1] B[2] B[3] multiplier[4]
+XX3 SUM[0] SUM[1] SUM[2] SUM[3] SUM[4] SUM[5] SUM[6] SUM[7] SUM[8] Prod[0] Prod[1] Prod[2] Prod[3] Prod[4] Prod[5] Prod[6] Prod[7] Sum[5:8] C VDD Out[0] Out[1] Out[2] Out[3] Out[4] Out[5] Out[6] Out[7] Out[8] mux[9]
+R1 Sum[5] 0 .001
+.ends alu_add_mul
+
+.subckt instructionmemorysimple WL8 WL7 BL8 BL7 BL6 BL5 BL4 BL3 BL2 BL1 BL0 VDD WL0 WL6 WL5 WL4 WL3 WL2 WL1
+R3 VDD BL8 40K
+R4 VDD BL7 40K
+R5 VDD BL6 40K
+R6 VDD BL5 40K
+R7 VDD BL4 40K
+R8 VDD BL3 40K
+R9 VDD BL2 40K
+R10 VDD BL1 40K
+R11 VDD BL0 40K
+M81 BL6 WL0 0 0 ROMN W=10u L=0.5u
+M86 BL1 WL0 0 0 ROMN W=10u L=0.5u
+M5 BL7 WL1 0 0 ROMN W=10u L=0.5u
+M6 BL0 WL0 0 0 ROMN W=10u L=0.5u
+M18 BL7 WL0 0 0 ROMN W=10u L=0.5u
+M19 BL5 WL2 0 0 ROMN W=10u L=0.5u
+M1 BL7 WL4 0 0 ROMN W=10u L=0.5u
+M8 BL8 WL4 0 0 ROMN W=10u L=0.5u
+M9 BL6 WL4 0 0 ROMN W=10u L=0.5u
+M10 BL7 WL3 0 0 ROMN W=10u L=0.5u
+M24 BL8 WL3 0 0 ROMN W=10u L=0.5u
+M25 BL6 WL3 0 0 ROMN W=10u L=0.5u
+M11 BL3 WL1 0 0 ROMN W=10u L=0.5u
+M22 BL2 WL1 0 0 ROMN W=10u L=0.5u
+M23 BL1 WL1 0 0 ROMN W=10u L=0.5u
+M26 BL5 WL1 0 0 ROMN W=10u L=0.5u
+M27 BL4 WL1 0 0 ROMN W=10u L=0.5u
+M28 BL8 WL2 0 0 ROMN W=10u L=0.5u
+M2 BL8 WL5 0 0 ROMN W=10u L=0.5u
+M3 BL7 WL5 0 0 ROMN W=10u L=0.5u
+M4 BL6 WL5 0 0 ROMN W=10u L=0.5u
+M7 BL8 WL6 0 0 ROMN W=10u L=0.5u
+M12 BL7 WL6 0 0 ROMN W=10u L=0.5u
+M13 BL6 WL6 0 0 ROMN W=10u L=0.5u
+M14 BL6 WL7 0 0 ROMN W=10u L=0.5u
+M15 BL7 WL7 0 0 ROMN W=10u L=0.5u
+M16 BL8 WL7 0 0 ROMN W=10u L=0.5u
+M17 BL8 WL8 0 0 ROMN W=10u L=0.5u
+M20 BL7 WL8 0 0 ROMN W=10u L=0.5u
+M21 BL6 WL8 0 0 ROMN W=10u L=0.5u
+.MODEL ROMN NMOS  (LEVEL=7 TOX=8e-9 U0 = 1300
++CGSO=3.4E-10 CGDO=3.4E-10 CJ=6.8e-4  CJSW=1.26e-10
++MJ=0.5 MJSW=0.5 CGBO=5.75E-10 RSH=33.8)
+.MODEL ROMP PMOS  (LEVEL=7 TOX=8e-9  CGDO=5.3752E-11
++U0= 440    CGSO=5.3752E-11  CGBO=3.3650E-10 CJ=4.8447E-04
++MJ=0.5027 CJSW=1.6457E-10  MJSW=0.217168 RSH=29.8)
+.ic V(BL8)=5 V(BL7)=0 V(BL6)=0 V(BL5)=5 V(BL4)=5 V(BL3)=5 V(BL2)=5 V(BL1)=0 V(BL0)=0
+.ends instructionmemorysimple
+
+.subckt decoder CLK VDD OUT[0] OUT[1] OUT[2] OUT[3] ADDR[0] ADDR[1]
+XX11 ADDR[0] ADDR[1] N001 VDD gate_nor
+XX12 N001 CLK OUT[0] VDD gate_and
+XX15 ADDR[1] N002 N003 VDD gate_nor
+XX16 N003 CLK OUT[1] VDD gate_and
+XX18 N006 CLK OUT[3] VDD gate_and
+XX17 ADDR[0] ADDR[1] N006 VDD gate_and
+XX20 ADDR[0] VDD N002 gate_not
+XX21 N004 ADDR[0] N005 VDD gate_nor
+XX22 N005 CLK OUT[2] VDD gate_and
+XX23 ADDR[1] VDD N004 gate_not
+.ends decoder
+
+.subckt sram D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD Q[0] Q[1] Q[2] Q[3] Q[4] Q[5] Q[6] Q[7] Q[8] WE ADDR
+XX1 D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD Q[0] Q[1] Q[2] Q[3] Q[4] Q[5] Q[6] Q[7] Q[8] OUT[0] OUT[1] 6tsram[9]
+XX2 D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD Q[0] Q[1] Q[2] Q[3] Q[4] Q[5] Q[6] Q[7] Q[8] OUT[2] OUT[3] 6tsram[9]
+XX4 VDD VDD OUT[0] OUT[1] OUT[2] OUT[3] ADDRB[0] ADDRB[1] decoder
+R1 ADDRB[1] ADDR 1
+R2 ADDRB[0] WE 1
+.ends sram
+
+.subckt mux[9] A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] A[8] B[0] B[1] B[2] B[3] B[4] B[5] B[6] B[7] B[8] C VDD Out[0] Out[1] Out[2] Out[3] Out[4] Out[5] Out[6] Out[7] Out[8]
+XX1 A[0] B[0] C VDD Out[0] mux
+XX2 A[1] B[1] C VDD Out[1] mux
+XX3 A[2] B[2] C VDD Out[2] mux
+XX4 A[3] B[3] C VDD Out[3] mux
+XX5 A[4] B[4] C VDD Out[4] mux
+XX6 A[5] B[5] C VDD Out[5] mux
+XX7 A[6] B[6] C VDD Out[6] mux
+XX8 A[7] B[7] C VDD Out[7] mux
+XX9 A[8] B[8] C VDD Out[8] mux
+.ends mux[9]
+
+.subckt reg[3] D[0] D[1] D[2] VDD Q[0] Q[1] Q[2] CLK !Q[0] !Q[1] !Q[2]
+XX2 D[1] VDD Q[1] CLK !Q[1] dff
+XX1 D[0] VDD Q[0] CLK !Q[0] dff
+XX3 D[2] VDD Q[2] CLK !Q[2] dff
+.ends reg[3]
+
+.subckt counter_ns PS[0] PS[1] PS[2] VDD NS[0] NS[1] NS[2]
+XX4 N001 VDD NS[0] gate_delay params: Speed=1
+XX5 N002 VDD NS[1] gate_delay params: Speed=1
+XX6 N004 VDD NS[2] gate_delay params: Speed=1
+XX2 PS[0] PS[1] N002 VDD gate_xor
+XX3 N003 PS[2] N004 VDD gate_xor
+XX7 PS[0] PS[1] N003 VDD gate_and
+XX13 PS[0] VDD N001 gate_not_param params: Speed=10
+.ends counter_ns
+
+.subckt reg[9] D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD Q[0] Q[1] Q[2] Q[3] Q[4] Q[5] Q[6] Q[7] Q[8] CLK !Q[0] !Q[1] !Q[2] !Q[3] !Q[4] !Q[5] !Q[6] !Q[7] !Q[8]
+XX1 D[0] D[1] D[2] VDD Q[0] Q[1] Q[2] CLK !Q[0] !Q[1] !Q[2] reg[3]
+XX2 D[3] D[4] D[5] VDD Q[3] Q[4] Q[5] CLK !Q[3] !Q[4] !Q[5] reg[3]
+XX3 D[6] D[7] D[8] VDD Q[6] Q[7] Q[8] CLK !Q[6] !Q[7] !Q[8] reg[3]
+.ends reg[9]
+
+.subckt rca[4] A[0] A[1] A[2] A[3] VDD SUM[0] SUM[1] SUM[2] SUM[3] B[0] B[1] B[2] B[3] Co
+XX1 A[0] VDD Sum[0] B[0] N003 half_adder
+XX2 A[1] VDD Sum[1] B[1] N002 N003 full_adder
+XX3 A[2] VDD Sum[2] B[2] N001 N002 full_adder
+XX4 A[3] VDD Sum[3] B[3] Co N001 full_adder
+.ends rca[4]
+
+.subckt multiplier[4] A[0] A[1] A[2] A[3] VDD Prod[0] Prod[1] Prod[2] Prod[3] Prod[4] Prod[5] Prod[6] Prod[7] B[0] B[1] B[2] B[3]
+XX1 A[0] B[3] N001 VDD gate_and
+XX2 A[0] B[2] N002 VDD gate_and
+XX3 A[0] B[1] N003 VDD gate_and
+XX4 A[0] B[0] Prod[0] VDD gate_and
+XX5 A[1] B[3] N004 VDD gate_and
+XX6 A[1] B[2] N005 VDD gate_and
+XX7 A[1] B[1] N006 VDD gate_and
+XX8 A[1] B[0] N007 VDD gate_and
+XX9 N003 VDD Prod[1] N007 N008 half_adder
+XX10 N002 VDD N011 N006 N014 N008 full_adder
+XX11 N001 VDD N010 N005 N012 N014 full_adder
+XX13 A[2] B[3] N015 VDD gate_and
+XX14 A[2] B[2] N016 VDD gate_and
+XX15 A[2] B[1] N017 VDD gate_and
+XX16 A[2] B[0] N018 VDD gate_and
+XX17 A[3] B[3] PB[3] VDD gate_and
+XX18 A[3] B[2] PB[2] VDD gate_and
+XX19 A[3] B[1] PB[1] VDD gate_and
+XX20 A[3] B[0] PB[0] VDD gate_and
+XX21 PA[0] PA[1] PA[2] PA[3] VDD Prod[3] Prod[4] Prod[5] Prod[6] PB[0] PB[1] PB[2] PB[3] Prod[7] rca[4]
+XX22 N011 VDD Prod[2] N018 N019 half_adder
+XX23 N010 VDD PA[0] N017 N021 N019 full_adder
+XX24 N009 VDD PA[1] N016 N020 N021 full_adder
+XX12 N004 VDD N009 N012 N013 half_adder
+XX25 N013 VDD PA[2] N015 PA[3] N020 full_adder
+.ends multiplier[4]
+
+.subckt gate_nor A B Out VDD
+M5 P001 A VDD VDD RIT4007P7
+M6 Out B P001 P001 RIT4007P7
+M7 Out A 0 0 RIT4007N7
+M8 Out B 0 0 RIT4007N7
+.inc CD4007.mod
+.ends gate_nor
+
+.subckt gate_and A B Out VDD
+XX3 A B N001 VDD gate_nand
+XX4 N001 VDD Out gate_not
+.ends gate_and
+
+.subckt gate_not A VDD !A
+M1 !A A 0 0 RIT4007N7
+M2 !A A VDD VDD RIT4007P7
+.inc CD4007.mod
+.ends gate_not
+
+.subckt 6tsram[9] D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD Q[0] Q[1] Q[2] Q[3] Q[4] Q[5] Q[6] Q[7] Q[8] RA WA
+XX1 D[0] VDD Q[0] RA WA 6tsram
+XX2 D[1] VDD Q[1] RA WA 6tsram
+XX3 D[2] VDD Q[2] RA WA 6tsram
+XX4 D[3] VDD Q[3] RA WA 6tsram
+XX5 D[4] VDD Q[4] RA WA 6tsram
+XX6 D[5] VDD Q[5] RA WA 6tsram
+XX7 D[6] VDD Q[6] RA WA 6tsram
+XX8 D[7] VDD Q[7] RA WA 6tsram
+XX9 D[8] VDD Q[8] RA WA 6tsram
+.ends 6tsram[9]
+
+.subckt mux A B C VDD Out
+XX1 B C N001 VDD gate_and
+XX3 A N003 N002 VDD gate_and
+XX4 C VDD N003 gate_not
+XX5 N001 N002 Out VDD gate_or
+.ends mux
+
+.subckt dff D VDD Q CLK !Q
+XX1 CLK VDD N002 gate_not_param params: Speed=1
+XX2 D VDD N004 gate_not_param params: Speed=100
+XX6 N003 Q !Q VDD gate_nand_param params: Speed=100
+XX5 N001 !Q Q VDD gate_nand_param params: Speed=100
+XX3 D CLK N002 VDD N001 gate_nand3_param params: Speed=100
+XX4 N002 CLK N004 VDD N003 gate_nand3_param params: Speed=100
+.ic V(Q)=0
+.ic V(!Q)=5
+.ends dff
+
+.subckt gate_delay A VDD OUT
+M1 N001 A 0 0 myNMOS w=myNW L=myNL
+M2 N001 A VDD VDD myPMOS W=myPW L=myPL
+M3 Out N001 0 0 myNMOS w=myNW L=myNL
+M4 Out N001 VDD VDD myPMOS W=myPW L=myPL
+.inc Mod_W2017N.mod
+.param myPW=2u*sqrt(Speed)
+.param myPL=100u/sqrt(Speed)
+.param myNW=.1u*sqrt(Speed)
+.param myNL=500u/sqrt(Speed)
+.param Speed=.1
+.ends gate_delay
+
+.subckt gate_xor A B Out VDD
+M1 Out A N003 N003 RIT4007N7
+M2 Out N002 P001 P001 RIT4007P7
+M3 Out N001 P002 P002 RIT4007P7
+M4 N003 N001 0 0 RIT4007N7
+M5 N003 B 0 0 RIT4007N7
+M6 Out N002 N003 N003 RIT4007N7
+M7 P002 B VDD VDD RIT4007P7
+M8 P001 A VDD VDD RIT4007P7
+XX1 A VDD N001 gate_not
+XX4 B VDD N002 gate_not
+.inc CD4007.mod
+.ends gate_xor
+
+.subckt gate_not_param A VDD !A
+M1 !A A 0 0 myNMOS W=myNW L=myNL
+M2 !A A VDD VDD myPMOS W=myPW L=myPL
+.inc Mod_W2017N.mod
+.param myPW=2u*sqrt(Speed)
+.param myPL=100u/sqrt(Speed)
+.param myNW=.6u*sqrt(Speed)
+.param myNL=100u/sqrt(Speed)
+.param Speed=1
+.ends gate_not_param
+
+.subckt half_adder A VDD SUM B C
+XX4 A B SUM VDD gate_xor
+XX5 B A C VDD gate_and
+.ends half_adder
+
+.subckt full_adder A VDD SUM B Co C
+XX9 A B N001 VDD gate_xor
+XX10 N001 C SUM VDD gate_xor
+XX1 A B N002 VDD gate_and
+XX2 A C N004 VDD gate_and
+XX3 B C N005 VDD gate_and
+XX4 N002 N004 N003 VDD gate_or
+XX5 N003 N005 Co VDD gate_or
+.ends full_adder
+
+.subckt gate_nand A B Out VDD
+M1 Out A N001 N001 RIT4007N7
+M2 Out A VDD VDD RIT4007P7
+M3 Out B VDD VDD RIT4007P7
+M4 N001 B 0 0 RIT4007N7
+.inc CD4007.mod
+.ends gate_nand
+
+.subckt 6tsram D VDD Q RA WA
+XX1 N001 VDD N002 gate_not_param
+XX2 N002 VDD N001 gate_not_param
+M1 N001 WA D 0 myNMOS W=myNW L=myNL
+M2 Q RA N002 0 myNMOS W=myNW L=myNL
+.inc Mod_W2017N.mod
+.param myPW=2u*sqrt(Speed)
+.param myPL=100u/sqrt(Speed)
+.param myNW=.6u*sqrt(Speed)
+.param myNL=100u/sqrt(Speed)
+.param Speed=100
+.ends 6tsram
+
+.subckt gate_or A B Out VDD
+M1 Out N001 N002 N002 RIT4007N7
+M2 Out N001 VDD VDD RIT4007P7
+M3 Out N003 VDD VDD RIT4007P7
+M4 N002 N003 0 0 RIT4007N7
+XX3 A VDD N001 gate_not
+XX4 B VDD N003 gate_not
+.inc CD4007.mod
+.ends gate_or
+
+.subckt gate_nand_param A B Out VDD
+M1 Out A N001 N001 myNMOS W=myNW L=myNL
+M2 Out A VDD VDD myPMOS W=myPW L=myPL
+M3 Out B VDD VDD myPMOS W=myPW L=myPL
+M4 N001 B 0 0 myNMOS W=myNW L=myNL
+.inc Mod_W2017N.mod
+.param myPW=2u*sqrt(Speed)
+.param myPL=100u/sqrt(Speed)
+.param myNW=.6u*sqrt(Speed)
+.param myNL=100u/sqrt(Speed)
+.param Speed=1
+.ends gate_nand_param
+
+.subckt gate_nand3_param A B C VDD Out
+M1 Out A N001 N001 myNMOS W=myNW L=myNL
+M4 Out A VDD VDD myPMOS W=myPW L=myPL
+M5 Out B VDD VDD myPMOS W=myPW L=myPL
+M2 N001 B P001 P001 myNMOS W=myNW L=myNL
+M3 P001 C 0 0 myNMOS W=myNW L=myNL
+M6 Out C VDD VDD myPMOS W=myPW L=myPL
+.inc Mod_W2017N.mod
+.param myPW=2u*sqrt(Speed)
+.param myPL=100u/sqrt(Speed)
+.param myNW=.9u*sqrt(Speed)
+.param myNL=100u/sqrt(Speed)
+.param Speed=1
+.ends gate_nand3_param
+
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\john\Documents\LTspiceXVII\lib\cmp\standard.mos
+.tran 0 100u
+.backanno
+.end
