@@ -1,14 +1,15 @@
 * Z:\home\luke\Backup\info\projects\transistorComputer\CMOS\Computer.asc
 XX2 VDD PC[0] PC[1] PC[2] CLK counter
-XX3 REGIN[0] REGIN[1] REGIN[2] REGIN[3] REGIN[4] REGIN[5] REGIN[6] REGIN[7] REGIN[8] VDD CLK ADDR0[0] ADDR0[1] ADDR1[0] ADDR1[1] ADDR2[0] ADDR2[1] REGOUT[0] REGOUT[1] REGOUT[2] REGOUT[3] REGOUT[4] REGOUT[5] REGOUT[6] REGOUT[7] REGOUT[8] null[0] null[1] null[2] null[3] null[4] null[5] null[6] null[7] null[8] N002 N002 N002 N002 N002 N002 N002 N002 N002 null[9] null[10] null[11] null[12] null[13] null[14] null[15] NC_01 NC_02 reg_file[4]
+XX3 REGIN[0] REGIN[1] REGIN[2] REGIN[3] REGIN[4] REGIN[5] REGIN[6] REGIN[7] REGIN[8] VDD CLK ADDR0[0] ADDR0[1] ADDR1[0] ADDR1[1] ADDR2[0] ADDR2[1] REGOUT[0] REGOUT[1] REGOUT[2] REGOUT[3] REGOUT[4] REGOUT[5] REGOUT[6] REGOUT[7] REGOUT[8] null[0] null[1] null[2] null[3] null[4] null[5] null[6] null[7] null[8] N001 N001 N001 N001 N001 N001 N001 N001 N001 null[9] null[10] null[11] null[12] null[13] null[14] null[15] NC_01 NC_02 reg_file[4]
 V1 VDD 0 5
-XX4 REGOUT[0] REGOUT[1] REGOUT[2] REGOUT[3] N002 N002 N002 N002 ALU VDD ALUOUT[0] ALUOUT[1] ALUOUT[2] ALUOUT[3] ALUOUT[4] ALUOUT[5] ALUOUT[6] ALUOUT[7] ALUOUT[8] alu_add_mul
+XX4 REGOUT[0] REGOUT[1] REGOUT[2] REGOUT[3] N001 N001 N001 N001 ALU VDD ALUOUT[0] ALUOUT[1] ALUOUT[2] ALUOUT[3] ALUOUT[4] ALUOUT[5] ALUOUT[6] ALUOUT[7] ALUOUT[8] alu_add_mul
 V2 CLK 0 PULSE(0 5 0 1n 1n 10u 20u)
 XX1 0 0 Write ALU DataSelect ADDR1[1] ADDR1[0] ADDR2[1] ADDR2[0] ADDR0[1] ADDR0[0] VDD WL[0] 0 0 0 WL[3] WL[2] WL[1] instructionmemorysimple
 XX5 CLK VDD WL[0] WL[1] WL[2] WL[3] PC[0] PC[1] decoder
 R1 PC[3] 0 1
-XX7 REGOUT[0] REGOUT[1] REGOUT[2] REGOUT[3] REGOUT[4] REGOUT[5] REGOUT[6] REGOUT[7] REGOUT[8] VDD N001 N001 N001 N001 N001 N001 N001 N001 N001 Write ALU sram
-XX8 N001 N001 N001 N001 N001 N001 N001 N001 N001 ALUOUT[0] ALUOUT[1] ALUOUT[2] ALUOUT[3] ALUOUT[4] ALUOUT[5] ALUOUT[6] ALUOUT[7] ALUOUT[8] DataSelect VDD REGIN[0] REGIN[1] REGIN[2] REGIN[3] REGIN[4] REGIN[5] REGIN[6] REGIN[7] REGIN[8] mux[9]
+XX7 REGOUT[0] REGOUT[1] REGOUT[2] REGOUT[3] REGOUT[4] REGOUT[5] REGOUT[6] REGOUT[7] REGOUT[8] VDD SRAM_OUT[0] SRAM_OUT[1] SRAM_OUT[2] SRAM_OUT[3] SRAM_OUT[4] SRAM_OUT[5] SRAM_OUT[6] SRAM_OUT[7] SRAM_OUT[8] Write_NOT ALU sram
+XX8 SRAM_OUT[0] SRAM_OUT[1] SRAM_OUT[2] SRAM_OUT[3] SRAM_OUT[4] SRAM_OUT[5] SRAM_OUT[6] SRAM_OUT[7] SRAM_OUT[8] ALUOUT[0] ALUOUT[1] ALUOUT[2] ALUOUT[3] ALUOUT[4] ALUOUT[5] ALUOUT[6] ALUOUT[7] ALUOUT[8] DataSelect VDD REGIN[0] REGIN[1] REGIN[2] REGIN[3] REGIN[4] REGIN[5] REGIN[6] REGIN[7] REGIN[8] mux[9]
+XX6 Write VDD Write_NOT gate_not
 
 * block symbol definitions
 .subckt counter VDD CNT[0] CNT[1] CNT[2] CLK
@@ -106,11 +107,20 @@ XX23 ADDR[1] VDD N003 gate_not
 .ends decoder
 
 .subckt sram D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD Q[0] Q[1] Q[2] Q[3] Q[4] Q[5] Q[6] Q[7] Q[8] WE ADDR
-XX1 D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD Q[0] Q[1] Q[2] Q[3] Q[4] Q[5] Q[6] Q[7] Q[8] OUT[0] OUT[1] 6tsram[9]
-XX2 D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD Q[0] Q[1] Q[2] Q[3] Q[4] Q[5] Q[6] Q[7] Q[8] OUT[2] OUT[3] 6tsram[9]
+XX1 D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD Qint[0] Qint[1] Qint[2] Qint[3] Qint[4] Qint[5] Qint[6] Qint[7] Qint[8] OUT[0] OUT[1] 6tsram[9]
+XX2 D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD Qint[0] Qint[1] Qint[2] Qint[3] Qint[4] Qint[5] Qint[6] Qint[7] Qint[8] OUT[2] OUT[3] 6tsram[9]
 XX4 VDD VDD OUT[0] OUT[1] OUT[2] OUT[3] ADDRB[0] ADDRB[1] decoder
 R1 ADDRB[1] ADDR 1
 R2 ADDRB[0] WE 1
+XX3 Qint[0] VDD Q[0] gate_not
+XX5 Qint[1] VDD Q[1] gate_not
+XX6 Qint[2] VDD Q[2] gate_not
+XX7 Qint[3] VDD Q[3] gate_not
+XX8 Qint[4] VDD Q[4] gate_not
+XX9 Qint[5] VDD Q[5] gate_not
+XX10 Qint[6] VDD Q[6] gate_not
+XX11 Qint[7] VDD Q[7] gate_not
+XX12 Qint[8] VDD Q[8] gate_not
 .ends sram
 
 .subckt mux[9] A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] A[8] B[0] B[1] B[2] B[3] B[4] B[5] B[6] B[7] B[8] C VDD Out[0] Out[1] Out[2] Out[3] Out[4] Out[5] Out[6] Out[7] Out[8]
@@ -124,6 +134,12 @@ XX7 A[6] B[6] C VDD Out[6] mux
 XX8 A[7] B[7] C VDD Out[7] mux
 XX9 A[8] B[8] C VDD Out[8] mux
 .ends mux[9]
+
+.subckt gate_not A VDD !A
+M1 !A A 0 0 RIT4007N7
+M2 !A A VDD VDD RIT4007P7
+.inc CD4007.mod
+.ends gate_not
 
 .subckt reg[3] D[0] D[1] D[2] VDD Q[0] Q[1] Q[2] CLK !Q[0] !Q[1] !Q[2]
 XX2 D[1] VDD Q[1] CLK !Q[1] dff
@@ -195,22 +211,16 @@ XX3 A B N001 VDD gate_nand
 XX4 N001 VDD Out gate_not
 .ends gate_and
 
-.subckt gate_not A VDD !A
-M1 !A A 0 0 RIT4007N7
-M2 !A A VDD VDD RIT4007P7
-.inc CD4007.mod
-.ends gate_not
-
 .subckt 6tsram[9] D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD Q[0] Q[1] Q[2] Q[3] Q[4] Q[5] Q[6] Q[7] Q[8] RA WA
-XX1 D[0] VDD Q[0] RA WA 6tsram
-XX2 D[1] VDD Q[1] RA WA 6tsram
+XX1 D[0] VDD Q[0] RA WA 6tsram params: data=5
+XX2 D[1] VDD Q[1] RA WA 6tsram params: data=5
 XX3 D[2] VDD Q[2] RA WA 6tsram
 XX4 D[3] VDD Q[3] RA WA 6tsram
 XX5 D[4] VDD Q[4] RA WA 6tsram
 XX6 D[5] VDD Q[5] RA WA 6tsram
 XX7 D[6] VDD Q[6] RA WA 6tsram
 XX8 D[7] VDD Q[7] RA WA 6tsram
-XX9 D[8] VDD Q[8] RA WA 6tsram
+XX9 D[8] VDD Q[8] RA WA 6tsram params: data=5
 .ends 6tsram[9]
 
 .subckt mux A B C VDD Out
@@ -293,16 +303,19 @@ M4 N001 B 0 0 RIT4007N7
 .ends gate_nand
 
 .subckt 6tsram D VDD Q RA WA
-XX1 N001 VDD N002 gate_not_param
-XX2 N002 VDD N001 gate_not_param
-M1 N001 WA D 0 myNMOS W=myNW L=myNL
-M2 Q RA N002 0 myNMOS W=myNW L=myNL
+XX1 data VDD !data gate_not_param
+XX2 !data VDD data gate_not_param
+M1 data WA D 0 myNMOS W=myNW L=myNL
+M2 Q RA !data 0 myNMOS W=myNW L=myNL
 .inc Mod_W2017N.mod
 .param myPW=2u*sqrt(Speed)
 .param myPL=100u/sqrt(Speed)
 .param myNW=.6u*sqrt(Speed)
 .param myNL=100u/sqrt(Speed)
 .param Speed=100
+.param val_not=5-val
+.ic V(data)=val          V(!data)=val_not
+.param val=0
 .ends 6tsram
 
 .subckt gate_or A B Out VDD
