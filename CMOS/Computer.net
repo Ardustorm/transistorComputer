@@ -1,12 +1,11 @@
-* D:\transistorComputer\CMOS\Computer.asc
+* Z:\home\luke\Backup\info\projects\transistorComputer\CMOS\Computer.asc
 XX2 VDD PC[0] PC[1] PC[2] CLK counter
 XX3 REGIN[0] REGIN[1] REGIN[2] REGIN[3] REGIN[4] REGIN[5] REGIN[6] REGIN[7] REGIN[8] VDD CLK ADDR0[0] ADDR0[1] ADDR1[0] ADDR1[1] ADDR2[0] ADDR2[1] REGOUT[0] REGOUT[1] REGOUT[2] REGOUT[3] REGOUT[4] REGOUT[5] REGOUT[6] REGOUT[7] REGOUT[8] null[0] null[1] null[2] null[3] null[4] null[5] null[6] null[7] null[8] N002 N002 N002 N002 N002 N002 N002 N002 N002 null[9] null[10] null[11] null[12] null[13] null[14] null[15] NC_01 NC_02 reg_file[4]
 V1 VDD 0 5
 XX4 REGOUT[0] REGOUT[1] REGOUT[2] REGOUT[3] N002 N002 N002 N002 ALU VDD ALUOUT[0] ALUOUT[1] ALUOUT[2] ALUOUT[3] ALUOUT[4] ALUOUT[5] ALUOUT[6] ALUOUT[7] ALUOUT[8] alu_add_mul
-V2 CLK 0 PULSE(0 5 10u 1n 1n 10u 20u)
-XX1 0 WL[7] Write ALU DataSelect ADDR1[1] ADDR1[0] ADDR2[1] ADDR2[0] ADDR0[1] ADDR0[0] VDD WL[0] WL[6] WL[5] WL[4] WL[3] WL[2] WL[1] instructionmemorysimple
+V2 CLK 0 PULSE(0 5 0 1n 1n 10u 20u)
+XX1 0 0 Write ALU DataSelect ADDR1[1] ADDR1[0] ADDR2[1] ADDR2[0] ADDR0[1] ADDR0[0] VDD WL[0] 0 0 0 WL[3] WL[2] WL[1] instructionmemorysimple
 XX5 CLK VDD WL[0] WL[1] WL[2] WL[3] PC[0] PC[1] decoder
-XX6 CLK VDD WL[4] WL[5] WL[6] WL[7] PC[2] PC[3] decoder
 R1 PC[3] 0 1
 XX7 REGOUT[0] REGOUT[1] REGOUT[2] REGOUT[3] REGOUT[4] REGOUT[5] REGOUT[6] REGOUT[7] REGOUT[8] VDD N001 N001 N001 N001 N001 N001 N001 N001 N001 Write ALU sram
 XX8 N001 N001 N001 N001 N001 N001 N001 N001 N001 ALUOUT[0] ALUOUT[1] ALUOUT[2] ALUOUT[3] ALUOUT[4] ALUOUT[5] ALUOUT[6] ALUOUT[7] ALUOUT[8] DataSelect VDD REGIN[0] REGIN[1] REGIN[2] REGIN[3] REGIN[4] REGIN[5] REGIN[6] REGIN[7] REGIN[8] mux[9]
@@ -40,8 +39,8 @@ XX11 CLK VDD SEL[0] SEL[1] SEL[2] SEL[3] ADDR0[0] ADDR0[1] decoder
 .subckt alu_add_mul A[0] A[1] A[2] A[3] B[0] B[1] B[2] B[3] C VDD Out[0] Out[1] Out[2] Out[3] Out[4] Out[5] Out[6] Out[7] Out[8]
 XX1 A[0] A[1] A[2] A[3] VDD SUM[0] SUM[1] SUM[2] SUM[3] B[0] B[1] B[2] B[3] SUM[4] rca[4]
 XX2 A[0] A[1] A[2] A[3] VDD Prod[0] Prod[1] Prod[2] Prod[3] Prod[4] Prod[5] Prod[6] Prod[7] B[0] B[1] B[2] B[3] multiplier[4]
-XX3 SUM[0] SUM[1] SUM[2] SUM[3] SUM[4] SUM[5] SUM[6] SUM[7] SUM[8] Prod[0] Prod[1] Prod[2] Prod[3] Prod[4] Prod[5] Prod[6] Prod[7] Sum[5:8] C VDD Out[0] Out[1] Out[2] Out[3] Out[4] Out[5] Out[6] Out[7] Out[8] mux[9]
-R1 Sum[5] 0 .001
+XX3 SUM[0] SUM[1] SUM[2] SUM[3] SUM[4] SUM[5] SUM[5] SUM[5] SUM[5] Prod[0] Prod[1] Prod[2] Prod[3] Prod[4] Prod[5] Prod[6] Prod[7] SUM[5] C VDD Out[0] Out[1] Out[2] Out[3] Out[4] Out[5] Out[6] Out[7] Out[8] mux[9]
+R1 SUM[5] 0 .001
 .ends alu_add_mul
 
 .subckt instructionmemorysimple WL8 WL7 BL8 BL7 BL6 BL5 BL4 BL3 BL2 BL1 BL0 VDD WL0 WL6 WL5 WL4 WL3 WL2 WL1
@@ -94,16 +93,16 @@ M21 BL6 WL8 0 0 ROMN W=10u L=0.5u
 .ends instructionmemorysimple
 
 .subckt decoder CLK VDD OUT[0] OUT[1] OUT[2] OUT[3] ADDR[0] ADDR[1]
-XX11 ADDR[0] ADDR[1] N001 VDD gate_nor
-XX12 N001 CLK OUT[0] VDD gate_and
-XX15 ADDR[1] N002 N003 VDD gate_nor
-XX16 N003 CLK OUT[1] VDD gate_and
-XX18 N006 CLK OUT[3] VDD gate_and
-XX17 ADDR[0] ADDR[1] N006 VDD gate_and
-XX20 ADDR[0] VDD N002 gate_not
-XX21 N004 ADDR[0] N005 VDD gate_nor
-XX22 N005 CLK OUT[2] VDD gate_and
-XX23 ADDR[1] VDD N004 gate_not
+XX11 ADDR[0] ADDR[1] N006 VDD gate_nor
+XX12 N006 CLK OUT[3] VDD gate_and
+XX15 ADDR[1] N001 N002 VDD gate_nor
+XX16 N002 CLK OUT[0] VDD gate_and
+XX18 N005 CLK OUT[2] VDD gate_and
+XX17 ADDR[0] ADDR[1] N005 VDD gate_and
+XX20 ADDR[0] VDD N001 gate_not
+XX21 N003 ADDR[0] N004 VDD gate_nor
+XX22 N004 CLK OUT[1] VDD gate_and
+XX23 ADDR[1] VDD N003 gate_not
 .ends decoder
 
 .subckt sram D[0] D[1] D[2] D[3] D[4] D[5] D[6] D[7] D[8] VDD Q[0] Q[1] Q[2] Q[3] Q[4] Q[5] Q[6] Q[7] Q[8] WE ADDR
@@ -346,7 +345,7 @@ M6 Out C VDD VDD myPMOS W=myPW L=myPL
 
 .model NMOS NMOS
 .model PMOS PMOS
-.lib C:\Users\john\Documents\LTspiceXVII\lib\cmp\standard.mos
+.lib Z:\usr\share\ltspice\lib\cmp\standard.mos
 .tran 0 100u
 .backanno
 .end
